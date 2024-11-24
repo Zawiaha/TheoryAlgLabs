@@ -1,18 +1,32 @@
-#!/usr/bin/env python3
-# -*- coding: utf-8 -*-
+def getInputMovie():
+    movies = input("Ввод названий фильмов через запятую: ")
+    if len(movies) > 2:
+        return movies
+    else:
+        return 'Терминатор, Пятый элемент, Аватар, Чужие, Назад в будущее'
 
-# Есть строка с перечислением фильмов
+def extractMoviesPosition(moviesString):
+    delimeterPosition = []
+    for i in range(len(moviesString)):
+        if moviesString[i] == ',':
+            delimeterPosition.append(i)
+    return delimeterPosition
 
-my_favorite_movies = 'Терминатор, Пятый элемент, Аватар, Чужие, Назад в будущее'
+def cutString(moviesString, delimeterPosition):
+    iter = 0
+    movies = []
+    for i in delimeterPosition:
+        movies.append(moviesString[iter:i])
+        iter = i + 2
+    movies.append(moviesString[iter: len(moviesString)])
+    return movies
+def showMovies(movies):
+    print(movies[0] + '\n',
+          movies[-1] + '\n',
+          movies[1] + '\n',
+          movies[-2]
+          )
 
-# Выведите на консоль с помощью индексации строки, последовательно:
-#   первый фильм
-#   последний
-#   второй
-#   второй с конца
-
-# Запятая не должна выводиться.  Переопределять my_favorite_movies нельзя
-# Использовать .split() или .find()или другие методы строки нельзя - пользуйтесь только срезами,
-# как указано в задании!
-
-# TODO здесь ваш код
+if __name__ == "__main__":
+    moviesString = getInputMovie()
+    showMovies(cutString(moviesString, extractMoviesPosition(moviesString)))
