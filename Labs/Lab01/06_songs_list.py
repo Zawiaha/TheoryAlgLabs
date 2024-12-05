@@ -23,6 +23,11 @@ def calcTotalTime(songs, songsList):
         if(song[0] in songs):
             songsTotalTime += song[1]
     return round(songsTotalTime, 2)
+def calcTotalTimeForDict(songs, songsDict):
+    songsTotalTime = 0.0
+    for song in songs:
+        songsTotalTime += songsDict[song]
+    return round(songsTotalTime, 2)
 
 # распечатайте общее время звучания трех песен: 'Halo', 'Enjoy the Silence' и 'Clean' в формате
 #   Три песни звучат ХХХ.XX минут
@@ -52,9 +57,6 @@ def main():
     firstListSongs = ['Halo', 'Enjoy the Silence', 'Clean']
     secondListSongs = ['Sweetest Perfection', 'Policy of Truth', 'Blue Dress']
     print(f"Три песни звучат {calcTotalTime(firstListSongs, violator_songs_list)} минут")
-    total_time_dict = sum(
-        round(violator_songs_dict[song], 2) for song in secondListSongs
-    )
-    print(f'А другие три песни звучат {total_time_dict:.2f} минут')
+    print(f'А другие три песни звучат {calcTotalTimeForDict(secondListSongs, violator_songs_dict)} минут')
 
 main()
