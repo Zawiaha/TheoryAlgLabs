@@ -43,11 +43,9 @@ class DeliveryApp:
         self.addressEntry = tk.Entry(root)
         self.addressEntry.pack()
 
-        # Кнопка добавления продукта
         self.addButton = tk.Button(root, text="Добавить продукт", command=self.addProduct)
         self.addButton.pack()
 
-        # Кнопка удаления продукта
         self.removeButton = tk.Button(root, text="Удалить продукт", command=self.removeProduct)
         self.removeButton.pack()
 
